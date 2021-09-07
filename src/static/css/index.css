@@ -1,3 +1,32 @@
-.container {
+.header-wrap {
 
+}
+
+.contents-wrap {
+    max-width: 1280px;
+}
+
+.border-top {
+    border-top: 1px solid #eeeeee;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.border-left {
+    border-left: 1px solid #eeeeee;
+}
+
+.list-wrap {
+    min-width: 900px;
+}
+
+.list-wrap li {
+    height: 175px;
+}
+
+.list-wrap .box {
+    margin-bottom: 1rem !important;
+    border-radius: 0px !important;
 }

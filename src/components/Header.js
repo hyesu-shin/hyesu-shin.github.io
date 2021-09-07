@@ -4,9 +4,12 @@ export default class Header extends Component {
 
     template() {
         return `
-            <div class="hero is-success">
+            <div class="hero border-bottom">
                 <div class="hero-body">
-                    <p>이곳은 타이틀 영역입니다.</p>            
+                    <div class="header-wrap is-flex is-justify-content-space-between">
+                        <h3 class="title is-3">Hello World:)</h3>
+                        <h6 class="title is-6">sue's TIL</h6>                                
+                    </div>
                 </div>
             </div>
         `

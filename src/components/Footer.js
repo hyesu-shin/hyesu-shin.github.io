@@ -4,9 +4,11 @@ export default class Footer extends Component {
 
     template() {
         return `
-            <div class="hero is-success is-small">
+            <div class="hero border-top">
                 <div class="hero-body">
-                    <p>이곳은 푸터 영역입니다.</p>            
+                    <div class="container">
+                        <p class="has-text-grey">Made with vanilla javascript.</p>                                
+                    </div>
                 </div>
             </div>
         `
