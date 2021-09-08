@@ -1,8 +1,9 @@
 import Component from "./core/Component.js";
 // import Items from "./components/Items.js";
 import Header from "./components/Header.js";
-import Contents from "./components/Contents.js";
-import Navigation from "./components/Navigation.js";
+// import Contents from "./components/Contents.js";
+// import Navigation from "./components/Navigation.js";
+import ContentsBody from "./components/ContentsBody.js";
 import Footer from "./components/Footer.js";
 
 export default class App extends Component {
@@ -13,34 +14,28 @@ export default class App extends Component {
     template() {
         return `
             <header data-component="header"></header>
-            <div class="has-background-white-ter">
-                <section class="container mb-6">
-                    <div class="contents-wrap">
-                        <div class="tile is-ancestor">
-                            <contents class="tile is-parent is-9" data-component="contents"></contents>
-                            <navigation class="tile is-parent is-3" data-component="navigation"></navigation>
-                        </div>
-                    </div>
-                </section>
-                <footer data-component="footer"></footer>
-            </div>
+            <contents-body data-component="body"></contents-body>
+            <footer class="has-background-white-ter" data-component="footer"></footer>
 <!--            <items data-component="items"></items>-->
         `;
     }
 
     // 자식 컴포넌트를 마운트 해주어야 함
     mounted() {
-        const {addItem, deleteItem, resultItems} = this;
+        // const {addItem, deleteItem, resultItems} = this;
         const $header = this.$target.querySelector('[data-component="header"]');
-        const $contents = this.$target.querySelector('[data-component="contents"]');
-        const $navigation = this.$target.querySelector('[data-component="navigation"]');
+        // const $contents = this.$target.querySelector('[data-component="contents"]');
+        // const $navigation = this.$target.querySelector('[data-component="navigation"]');
+        const $body = this.$target.querySelector('[data-component="body"]');
         const $footer = this.$target.querySelector('[data-component="footer"]');
         // const $items = this.$target.querySelector('[data-component="items"]');
 
         new Header($header, {});
-        new Contents($contents, {});
-        new Navigation($navigation, {});
+        // new Contents($contents, {});
+        // new Navigation($navigation, {});
+        new ContentsBody($body, {});
         new Footer($footer, {});
+
         // new Items($items, {
         //     resultItems,
         //     addItem: addItem.bind(this),

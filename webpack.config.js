@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry : {
+        router: './core/Router.js',
         main : './src/app.js'
     },
     output: {

@@ -4,6 +4,7 @@
 
 .contents-wrap {
     max-width: 1280px;
+    min-height: 980px;
 }
 
 .border-top {
