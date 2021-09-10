@@ -2,8 +2,12 @@
 const path = require('path');
 
 module.exports = {
+    devServer: {
+        // 404 error -> index.html 로 리다이렉트
+        historyApiFallback: true
+    },
     entry : {
-        router: './core/Router.js',
+        router: './src/core/Router.js',
         main : './src/app.js'
     },
     output: {

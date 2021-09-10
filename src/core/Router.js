@@ -19,7 +19,7 @@ const routes = {
  */
 // entry point
 function initialRoutes (mode, el, props) {
-    return renderComponent(el, routes['/'], props);
+    renderComponent(el, routes['/'], props);
     // window.onpopstate = () => renderHTML(el, routes[window.location.pathname]);
     if (mode === 'history') {
         // console.log('router.js > props', props)
@@ -34,7 +34,7 @@ function initialRoutes (mode, el, props) {
 }
 
 // set browser history
-function historyRouterPush (pathName, el, props) {
+function historyRoutePush (pathName, el, props) {
     window.history.pushState({}, pathName, window.location.origin + pathName);
     renderComponent(el, routes[pathName], props);
     // renderHTML(el, routes[pathName]);
@@ -72,5 +72,6 @@ function renderComponent (el, route, props) {
 
 export {
     initialRoutes,
-    historyRouterPush
+    historyRoutePush,
+    hashRoutePush
 }

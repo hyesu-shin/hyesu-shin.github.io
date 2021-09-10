@@ -1,5 +1,5 @@
 import Component from "../core/Component.js";
-import { initialRoutes, historyRouterPush } from "../core/Router.js";
+import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router.js";
 
 /**
  *  라우팅에 따라 lists / item 으로 이동
@@ -30,10 +30,9 @@ export default class Contents extends Component {
         initialRoutes('history', $contents, { listItems });
 
         // 새로고침, 뒤로가기 이벤트 등 window 객체에 다시 접근하는 경우
-        window.onload = () => {
-            console.log('dddd');
-            historyRouterPush(window.location.pathname, $contents, { listItems });
-        }
+        // window.onload = () => {
+        //     historyRoutePush(window.location.pathname, $contents, { listItems });
+        // }
     }
     get listItems() {
         const {items} = this.$state;
