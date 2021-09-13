@@ -19,13 +19,15 @@ const routes = {
  */
 // entry point
 function initialRoutes (mode, el, props) {
-    renderComponent(el, routes['/'], props);
-    // window.onpopstate = () => renderHTML(el, routes[window.location.pathname]);
+    renderComponent(el, routes[window.location.pathname], props);
+
     if (mode === 'history') {
-        // console.log('router.js > props', props)
-        // console.log('router.js > initialRoutes()')
-        renderComponent(el, routes['/'], props);
-        window.onpopstate = () => renderComponent(el, routes[window.location.pathname]);
+        let pathName = window.location.pathname;
+        // history 에 저장되어 있는 데이터를 다시 사용할 수 있을 때 발생 (뒤로가기 등)
+        window.onpopstate = () => {
+            renderComponent(el, routes[pathName], props);
+            window.history.pushState({}, pathName, window.location.origin + pathName);
+        }
     } else {
         window.addEventListener('hashchange', () => {
             return renderComponent(el, getHashRoute(), props);
@@ -62,11 +64,8 @@ function hashRoutePush (pathName, el, props) {
     renderComponent(el, routes[pathName], props);
 }
 
+// 컴포넌트를 화면에 붙이는 코드
 function renderComponent (el, route, props) {
-    // console.log('router.js > renderComponent()')
-    // console.log(Lists);
-    // console.log(props);
-    // console.log(el, route);
     new route(el, props);
 }
 

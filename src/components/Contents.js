@@ -28,11 +28,6 @@ export default class Contents extends Component {
 
         // 페이지 초기화
         initialRoutes('history', $contents, { listItems });
-
-        // 새로고침, 뒤로가기 이벤트 등 window 객체에 다시 접근하는 경우
-        // window.onload = () => {
-        //     historyRoutePush(window.location.pathname, $contents, { listItems });
-        // }
     }
     get listItems() {
         const {items} = this.$state;

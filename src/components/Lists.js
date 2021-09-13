@@ -34,6 +34,7 @@ export default class Lists extends Component {
         this.addEvent('click', '#item', ({target}) => {
             const $route = target.getAttribute('route');
             historyRoutePush($route, $contents, {});
+            // hashRoutePush($route, $contents, {});
         });
     }
 }
