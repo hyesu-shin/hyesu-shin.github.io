@@ -1,7 +1,7 @@
 // Entry Point
 
 import App from './app.js'
-import firebase from "firebase"
+import firebase from "firebase/app"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAx0V9P4y2a327QX5a-IHyliC2zJfEcfsM",
@@ -14,6 +14,6 @@ const firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.getFirestore(app);
+// const db = firebase.getFirestore(app);
 
 new App(document.querySelector('#app'), '') ;
