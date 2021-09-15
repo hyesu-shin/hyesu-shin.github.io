@@ -1,7 +1,7 @@
 // Entry Point
 
 import App from './app.js'
-import firebase from "firebase/app"
+import firebase from "firebase"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAx0V9P4y2a327QX5a-IHyliC2zJfEcfsM",
