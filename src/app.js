@@ -41,6 +41,12 @@ export default class App extends Component {
         //     addItem: addItem.bind(this),
         //     deleteItem: deleteItem.bind(this)
         // });
+        let now = new Date();
+        console.log('dddddd');
+        this.db.collection("user").add({
+            name: 'name',
+            insertTime: now
+        });
     }
 
     // get resultItems () {
