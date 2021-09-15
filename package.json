@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/hyesu-shin/hyesu-shin.github.io#readme",
   "devDependencies": {
+    "firebase": "^8.10.0",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {}
+  }
 }
