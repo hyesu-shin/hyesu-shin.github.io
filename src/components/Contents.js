@@ -24,7 +24,7 @@ export default class Contents extends Component {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
         // console.log(listItems);
-        // console.log('Contents.js > mounted()')
+        // console.log('Contents.js > mounted()');
 
         // 페이지 초기화
         initialRoutes('history', $contents, { listItems });

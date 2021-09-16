@@ -29,4 +29,12 @@ export default class ContentsBody extends Component {
         new Contents($contents, {});
         new Navigation($navigation, {});
     }
+
+    setEvent() {
+        // 클릭 이벤트
+        // 이벤트 버블링
+        this.addEvent('click','#item', ({target}) => {
+            console.log(target);
+        });
+    }
 }

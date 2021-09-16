@@ -26,7 +26,6 @@ export default class Navigation extends Component {
 
     mounted() {
         const a = this.$target;
-        console.log(a);
         const database = firebase.database;
 
         database.collection('categories').get().then((response) => {
