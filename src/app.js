@@ -1,10 +1,9 @@
 import Component from "./core/Component.js";
 // import Items from "./components/Items.js";
 import Header from "./components/Header.js";
-// import Contents from "./components/Contents.js";
-// import Navigation from "./components/Navigation.js";
 import ContentsBody from "./components/ContentsBody.js";
 import Footer from "./components/Footer.js";
+import firebase from "./firebase";
 
 export default class App extends Component {
     setup() {
@@ -24,15 +23,11 @@ export default class App extends Component {
     mounted() {
         // const {addItem, deleteItem, resultItems} = this;
         const $header = this.$target.querySelector('[data-component="header"]');
-        // const $contents = this.$target.querySelector('[data-component="contents"]');
-        // const $navigation = this.$target.querySelector('[data-component="navigation"]');
         const $body = this.$target.querySelector('[data-component="body"]');
         const $footer = this.$target.querySelector('[data-component="footer"]');
         // const $items = this.$target.querySelector('[data-component="items"]');
 
         new Header($header, {});
-        // new Contents($contents, {});
-        // new Navigation($navigation, {});
         new ContentsBody($body, {});
         new Footer($footer, {});
 
@@ -41,12 +36,7 @@ export default class App extends Component {
         //     addItem: addItem.bind(this),
         //     deleteItem: deleteItem.bind(this)
         // });
-        let now = new Date();
-        console.log('dddddd');
-        this.db.collection("user").add({
-            name: 'name',
-            insertTime: now
-        });
+
     }
 
     // get resultItems () {

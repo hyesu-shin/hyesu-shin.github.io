@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"test\"",
+    "serve": "webpack-dev-server --inline --hot",
     "start": "webpack serve --mode=production",
     "start:dev": "webpack serve --mode=development",
     "build": "webpack --mode=production",
@@ -22,9 +23,15 @@
   },
   "homepage": "https://github.com/hyesu-shin/hyesu-shin.github.io#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
     "firebase": "^8.6.5",
-    "webpack": "^5.37.0",
-    "webpack-cli": "^4.7.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
   }
 }

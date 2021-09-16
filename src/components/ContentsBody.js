@@ -8,12 +8,12 @@ export default class ContentsBody extends Component {
 
     template() {
         return `
-            <div class="has-background-white-ter">
+            <div class="has-background-white-ter border-top">
                 <section class="container">
                     <div class="contents-wrap">
                         <div class="tile is-ancestor">
-                            <contents class="tile is-parent is-9 mt-6 mb-6" data-component="contents"></contents>
-                            <navigation class="tile is-parent border-left is-3" data-component="navigation"></navigation>
+                            <contents class="tile is-parent contents is-9" data-component="contents"></contents>
+                            <navigation class="tile is-parent navigation border-left is-3" data-component="navigation"></navigation>
                         </div>
                     </div>
                 </section>

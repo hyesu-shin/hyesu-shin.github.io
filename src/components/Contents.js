@@ -14,7 +14,7 @@ export default class Contents extends Component {
     template() {
         return `
             <div class="tile">
-                <div id="contents"></div>
+                <div class="list-contents" id="contents"></div>
             </div>
         `
     }
@@ -29,8 +29,11 @@ export default class Contents extends Component {
         // 페이지 초기화
         initialRoutes('history', $contents, { listItems });
     }
+
     get listItems() {
         const {items} = this.$state;
         return items;
     }
+
+
 }
