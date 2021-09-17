@@ -33,8 +33,8 @@ export default class ContentsBody extends Component {
     setEvent() {
         // 클릭 이벤트
         // 이벤트 버블링
-        this.addEvent('click','#item', ({target}) => {
-            console.log(target);
-        });
+        // this.addEvent('click','#item', ({target}) => {
+        //     console.log(target);
+        // });
     }
 }

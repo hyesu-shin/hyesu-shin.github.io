@@ -21,6 +21,7 @@ export default class Component {
 
     setEvent () {}
     setState (newState) {
+        console.log('setState', newState);
         this.$state = { ...this.$state, ...newState };
         this.render();
     }

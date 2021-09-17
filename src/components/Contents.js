@@ -1,5 +1,6 @@
-import Component from "../core/Component.js";
-import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router.js";
+import Component from "../core/Component";
+import firebase from "../firebase";
+import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router";
 
 /**
  *  라우팅에 따라 lists / item 으로 이동
@@ -8,7 +9,9 @@ import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router.j
  */
 export default class Contents extends Component {
     setup() {
-        this.$state = { items : ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'] };
+        this.$state = { items : [] };
+        const a = this.getCategoryName();
+        console.log('setup', this.$state, a);
     }
 
     template() {
@@ -30,10 +33,36 @@ export default class Contents extends Component {
         initialRoutes('history', $contents, { listItems });
     }
 
-    get listItems() {
-        const {items} = this.$state;
+    setEvent () {
+        this.getListItems();
+    }
+
+    get listItems () {
+        const { items } = this.$state;
         return items;
     }
 
+    // 전체 리스트 받아오는 함수
+    getListItems () {
+        const database = firebase.database;
+        let list = [];
 
+        database.collection('contents').get().then((response) => {
+            response.forEach((doc) => {
+                list.push(doc.data().contentName);
+                // console.log(doc.id, doc.data().contentName);
+            });
+            this.setState({
+                items: list
+            });
+        });
+    }
+
+    // 카테고리명 받아오는 함수
+    getCategoryName () {
+        let categoryName;
+
+        categoryName = window.location.pathname;
+        return categoryName;
+    }
 }
