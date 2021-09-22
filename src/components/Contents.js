@@ -1,6 +1,7 @@
 import Component from "../core/Component";
+import Lists from "../components/Lists";
 import firebase from "../firebase";
-import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router";
+import { historyRoutePush } from "../core/Router";
 
 /**
  *  라우팅에 따라 lists / item 으로 이동
@@ -9,9 +10,9 @@ import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router";
  */
 export default class Contents extends Component {
     setup() {
-        this.$state = { items : [] };
-        const a = this.getCategoryName();
-        console.log('setup', this.$state, a);
+        this.$state = {
+            items : []
+        };
     }
 
     template() {
@@ -26,11 +27,9 @@ export default class Contents extends Component {
     mounted() {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
-        // console.log(listItems);
-        // console.log('Contents.js > mounted()');
 
-        // 페이지 초기화
-        initialRoutes('history', $contents, { listItems });
+        // new Lists($contents, { listItems });
+        historyRoutePush('/list', $contents, { listItems });
     }
 
     setEvent () {
@@ -62,7 +61,7 @@ export default class Contents extends Component {
     getCategoryName () {
         let categoryName;
 
-        categoryName = window.location.pathname;
+        categoryName = window.location.query;
         return categoryName;
     }
 }

@@ -1,5 +1,5 @@
 import Component from "../core/Component.js";
-import { initialRoutes, hashRoutePush, historyRoutePush } from "../core/Router.js";
+import { historyRoutePush } from "../core/Router.js";
 
 export default class Lists extends Component {
 
@@ -34,7 +34,6 @@ export default class Lists extends Component {
         this.addEvent('click', '#item', ({target}) => {
             const $route = target.getAttribute('route');
             historyRoutePush($route, $contents, {});
-            // hashRoutePush($route, $contents, {});
         });
     }
 }
