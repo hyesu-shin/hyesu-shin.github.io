@@ -7,7 +7,9 @@ import { initialRoutes } from "../core/Router";
 export default class ContentsBody extends Component {
     setup() {
         this.$state = {
-            navigation: []
+            navigation: [],
+            navigationName: '',
+            contents: []
         };
     }
 
@@ -29,14 +31,18 @@ export default class ContentsBody extends Component {
     // 자식 컴포넌트를 마운트 해주어야 함
     mounted() {
         const { navigation } = this;
+        const { getSelectedContentList } = this;
         const $contents = this.$target.querySelector('[data-component="contents"]');
         const $navigation = this.$target.querySelector('[data-component="navigation"]');
 
-        // new Contents($contents, {});
-        new Navigation($navigation, { navigation });
+        new Contents($contents, {});
+        new Navigation($navigation, {
+            navigation,
+            getSelectedContentList: getSelectedContentList.bind(this)
+        });
 
         // 페이지 초기화
-        initialRoutes('history', $contents, {});
+        // initialRoutes('history', $contents, {});
     }
 
     setEvent () {
@@ -61,6 +67,19 @@ export default class ContentsBody extends Component {
                navigation: list
            });
         });
+    }
+
+    // 카테고리 선택시 선택된 카테고리에 해당하는 컨텐츠 목록 출력 함수
+    getSelectedContentList (selectedContents) {
+        console.log('제발나와라', selectedContents);
+        const { contents } = this.$state;
+        // console.log('이건 리스트', contents);
+        // this.setState({
+        //     contents: [
+        //         ...contents,
+        //         selectedContents
+        //     ]
+        // });
     }
 }
 

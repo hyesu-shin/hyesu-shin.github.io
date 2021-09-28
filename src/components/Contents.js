@@ -27,6 +27,7 @@ export default class Contents extends Component {
     mounted() {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
+        console.log(listItems);
 
         // new Lists($contents, { listItems });
         historyRoutePush('/list', $contents, { listItems });
@@ -35,7 +36,6 @@ export default class Contents extends Component {
     setEvent () {
         this.getListItems();
     }
-
     get listItems () {
         const { items } = this.$state;
         return items;

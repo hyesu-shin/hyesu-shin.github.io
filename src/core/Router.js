@@ -32,6 +32,11 @@ function initialRoutes (mode, el, props) {
 function historyRoutePush (pathName, el, props) {
     window.history.pushState({}, pathName, window.location.origin + pathName);
     renderComponent(el, routes[pathName], props);
+
+    window.onpopstate = () => {
+        renderComponent(el, routes['/'], props);
+        // window.history.pushState({}, pathName, window.location.origin + pathName);
+    }
     // renderHTML(el, routes[pathName]);
 }
 
@@ -54,7 +59,7 @@ function hashRoutePush (pathName, el, props) {
 
 // 컴포넌트를 화면에 붙이는 코드
 function renderComponent (el, route, props) {
-    // console.log(route);
+    console.log(route);
     switch (route) {
         case 'contents' :
             new Contents(el, props);

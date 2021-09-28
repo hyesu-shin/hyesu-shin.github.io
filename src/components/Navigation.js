@@ -30,13 +30,15 @@ export default class Navigation extends Component {
                // console.log(doc.id, doc.data().name);
            });
         });
+
+        console.log(this.$target);
     }
 
     setEvent () {
         // 카테고리 클릭 이벤트
         this.addEvent('click', '.category', ({target}) => {
-           console.log(target.innerHTML);
-           this.getCategoryInfo();
+           let name = target.innerHTML;
+           this.getCategoryInfo(name);
 
             /**
              * TODO
@@ -50,12 +52,36 @@ export default class Navigation extends Component {
     }
 
     // 카테고리 정보 받아오는 함수
-    getCategoryInfo () {
-        const database = firebase.database;
+    getCategoryInfo(_name) {
 
-        let categoryId;
-        let categoryName;
+        let categoryData = firebase.database.collection('categories').where("name", "==", _name)
+            .get()
+            .then((querySnapShot) => {
+                querySnapShot.forEach((doc) => {
+                    this.getContentList(doc.id);
+                })
+            })
+            .catch((error) => {
+                console.log("Error getting documents", error)
+            });
+    }
 
-        // database.collection('categories')
+    // categoryId 와 매칭되는 content list 받아오는 함수
+    getContentList (_id) {
+        const { getSelectedContentList } = this.$props;
+
+        firebase.database.collection('contents').where("category", "==", _id)
+            .get()
+            .then((querySnapShot) => {
+                let contentList = []
+                querySnapShot.forEach((doc) => {
+                    // console.log(_id, doc.data());
+                    contentList.push(doc.data())
+                })
+                getSelectedContentList(contentList);
+            })
+            .catch((error) => {
+                console.log("Error getting documents", error)
+            })
     }
 }
