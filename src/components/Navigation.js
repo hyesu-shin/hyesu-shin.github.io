@@ -31,7 +31,7 @@ export default class Navigation extends Component {
            });
         });
 
-        console.log(this.$target);
+        // console.log(this.$target);
     }
 
     setEvent () {

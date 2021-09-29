@@ -1,7 +1,7 @@
 import Component from "../core/Component";
 import Lists from "../components/Lists";
 import firebase from "../firebase";
-import { historyRoutePush } from "../core/Router";
+import {historyRoutePush, initialRoutes} from "../core/Router";
 
 /**
  *  라우팅에 따라 lists / item 으로 이동
@@ -27,10 +27,9 @@ export default class Contents extends Component {
     mounted() {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
-        console.log(listItems);
 
         // new Lists($contents, { listItems });
-        historyRoutePush('/list', $contents, { listItems });
+        initialRoutes('history', $contents, { listItems });
     }
 
     setEvent () {
