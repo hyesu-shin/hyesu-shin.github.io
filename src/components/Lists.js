@@ -30,10 +30,12 @@ export default class Lists extends Component {
     // 모든 이벤트를 this.target 에 등록하여 사용
     setEvent() {
         const $contents = this.$target;
+        const { listItems } = this.$props;
 
         this.addEvent('click', '#item', ({target}) => {
+            console.log(target)
             const $route = target.getAttribute('route');
-            historyRoutePush($route, $contents, {});
+            historyRoutePush($route, $contents, { listItems });
         });
     }
 }

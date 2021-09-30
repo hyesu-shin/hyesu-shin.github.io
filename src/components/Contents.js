@@ -28,8 +28,8 @@ export default class Contents extends Component {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
 
-        // new Lists($contents, { listItems });
         initialRoutes('history', $contents, { listItems });
+        new Lists($contents, { listItems });
     }
 
     setEvent () {

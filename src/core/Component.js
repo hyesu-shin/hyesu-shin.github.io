@@ -43,6 +43,7 @@ export default class Component {
 
         this.$target.addEventListener(eventType, event => {
             if (!isTarget(event.target)) return false;
+            console.log(event)
             callback(event);
         })
     }
