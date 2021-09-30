@@ -5,6 +5,7 @@ export default class Lists extends Component {
 
     template() {
         const { listItems } = this.$props;
+        console.log('listItems', listItems);
 
         return `
             <div class="list-wrap">
@@ -33,7 +34,6 @@ export default class Lists extends Component {
         const { listItems } = this.$props;
 
         this.addEvent('click', '#item', ({target}) => {
-            console.log(target)
             const $route = target.getAttribute('route');
             historyRoutePush($route, $contents, { listItems });
         });

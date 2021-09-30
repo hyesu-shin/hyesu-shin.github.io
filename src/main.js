@@ -6,4 +6,4 @@ import App from './app.js'
 // import {initialRoutes} from "./core/Router";
 
 // initialRoutes('history', document.querySelector('#app'), '');
-new App(document.querySelector('#app'), '');
+new App(document.querySelector('#app'), '', true);

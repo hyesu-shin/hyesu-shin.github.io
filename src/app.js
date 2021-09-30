@@ -27,9 +27,9 @@ export default class App extends Component {
         const $footer = this.$target.querySelector('[data-component="footer"]');
         // const $items = this.$target.querySelector('[data-component="items"]');
 
-        new Header($header, {});
-        new ContentsBody($body, {});
-        new Footer($footer, {});
+        new Header($header, {}, true);
+        new ContentsBody($body, {}, true);
+        new Footer($footer, {}, true);
 
         // new Items($items, {
         //     resultItems,

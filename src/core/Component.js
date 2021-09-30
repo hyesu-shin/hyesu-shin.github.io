@@ -3,11 +3,14 @@ export default class Component {
     $props;
     $state;
 
-    constructor($target, $props) {
+    constructor($target, $props, $setEvent) {
         this.$target = $target;
         this.$props = $props;   // $props 할당
         this.setup();
-        this.setEvent();
+        // 이벤트는 컴포넌트를 초기화 할 때 한 번만 등록
+        if ($setEvent) {
+            this.setEvent();
+        }
         this.render();
     }
 
@@ -43,7 +46,6 @@ export default class Component {
 
         this.$target.addEventListener(eventType, event => {
             if (!isTarget(event.target)) return false;
-            console.log(event)
             callback(event);
         })
     }

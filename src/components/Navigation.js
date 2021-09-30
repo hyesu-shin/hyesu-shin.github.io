@@ -30,24 +30,20 @@ export default class Navigation extends Component {
                // console.log(doc.id, doc.data().name);
            });
         });
-
-        // console.log(this.$target);
     }
 
+    /**
+     * TODO
+     *
+     * 1. 내비게이션 리스트 클릭하면 contents.js 에 이벤트 전달
+     * 2. 클릭한 카테고리에 해당하는 문서 id 값, 카테고리 이름을 contents.js 에 props 로 전달
+     * 3. contents.js 에서는 listItems 를 갱신 후 페이지 재랜더링
+     */
     setEvent () {
         // 카테고리 클릭 이벤트
         this.addEvent('click', '.category', ({target}) => {
            let name = target.innerHTML;
            this.getCategoryInfo(name);
-
-            /**
-             * TODO
-             *
-             * 1. 내비게이션 리스트 클릭하면 contents.js 에 이벤트 전달
-             * 2. 클릭한 카테고리에 해당하는 문서 id 값, 카테고리 이름을 contents.js 에 props 로 전달
-             * 3. contents.js 에서는 listItems 를 갱신 후 페이지 재랜더링
-             */
-
         });
     }
 

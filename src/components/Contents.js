@@ -29,7 +29,7 @@ export default class Contents extends Component {
         const $contents = this.$target.querySelector('#contents');
 
         initialRoutes('history', $contents, { listItems });
-        new Lists($contents, { listItems });
+        // new Lists($contents, { listItems }, true);
     }
 
     setEvent () {

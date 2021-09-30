@@ -2,7 +2,7 @@ import Component from "../core/Component";
 import Contents from "./Contents";
 import Navigation from "./Navigation";
 import firebase from "../firebase";
-import { initialRoutes } from "../core/Router";
+import { initialRoutes, historyRoutePush } from "../core/Router";
 
 export default class ContentsBody extends Component {
     setup() {
@@ -35,18 +35,25 @@ export default class ContentsBody extends Component {
         const $contents = this.$target.querySelector('[data-component="contents"]');
         const $navigation = this.$target.querySelector('[data-component="navigation"]');
 
-        new Contents($contents, {});
+        new Contents($contents, {}, true);
         new Navigation($navigation, {
             navigation,
             getSelectedContentList: getSelectedContentList.bind(this)
-        });
+        }, true);
 
-        // 페이지 초기화
-        // initialRoutes('history', $contents, {});
     }
 
     setEvent () {
+        const $contents = this.$target.querySelector('#contents');
         this.getNavigationItems();
+
+        // 이벤트 버블링
+        this.addEvent('click', '.category', ({target}) => {
+            const { contents } = this.$state;
+            console.log('ddddd', contents);
+
+           historyRoutePush('/list', $contents, { contents })
+        });
     }
 
     get navigation () {
@@ -71,15 +78,11 @@ export default class ContentsBody extends Component {
 
     // 카테고리 선택시 선택된 카테고리에 해당하는 컨텐츠 목록 출력 함수
     getSelectedContentList (selectedContents) {
-        console.log('제발나와라', selectedContents);
-        const { contents } = this.$state;
-        // console.log('이건 리스트', contents);
-        // this.setState({
-        //     contents: [
-        //         ...contents,
-        //         selectedContents
-        //     ]
-        // });
+        console.log('컨텐츠 목록 바인드');
+        this.setState({
+            contents: selectedContents
+        });
+        console.log(this.$state);
     }
 }
 
