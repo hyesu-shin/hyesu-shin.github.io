@@ -6,11 +6,9 @@ export default class Component {
     constructor($target, $props, $setEvent) {
         this.$target = $target;
         this.$props = $props;   // $props 할당
+        this.$setEvent = $setEvent;
         this.setup();
-        // 이벤트는 컴포넌트를 초기화 할 때 한 번만 등록
-        if ($setEvent) {
-            this.setEvent();
-        }
+        this.setEvent();
         this.render();
     }
 
@@ -44,10 +42,13 @@ export default class Component {
         // closest 를 이용하여 처리
         const isTarget = (target) => children.includes(target) || target.closest(selector);
 
-        this.$target.addEventListener(eventType, event => {
-            if (!isTarget(event.target)) return false;
-            callback(event);
-        })
+        if (this.$setEvent) {
+            this.$target.addEventListener(eventType, event => {
+                console.log(event.target);
+                if (!isTarget(event.target)) return false;
+                callback(event);
+            })
+        }
     }
 }
 

@@ -30,6 +30,7 @@ function initialRoutes (mode, el, props) {
 
 // set browser history
 function historyRoutePush (pathName, el, props) {
+    console.log(pathName, el ,props);
     window.history.pushState(props, pathName, window.location.origin + pathName + props.params);
     renderComponent(el, routes[pathName], props);
 
