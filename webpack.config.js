@@ -1,5 +1,6 @@
 // node 의 기본 모듈
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -33,6 +34,9 @@ module.exports = {
         modules: ['./node_modules'],
         extensions: ['.js', '.css'],
     },
+    plugins: [
+        new CleanWebpackPlugin()
+    ],
     output: {
         path : path.resolve('./dist'),
         // filename : '[name].js'
