@@ -28,6 +28,7 @@ export default class Contents extends Component {
         const { listItems } = this;
         const $contents = this.$target.querySelector('#contents');
 
+        // console.log('얘가 다시?')
         initialRoutes('history', $contents, { listItems });
         // new Lists($contents, { listItems }, true);
     }
@@ -47,7 +48,7 @@ export default class Contents extends Component {
 
         database.collection('contents').get().then((response) => {
             response.forEach((doc) => {
-                list.push(doc.data().contentName);
+                list.push(doc.data());
                 // console.log(doc.id, doc.data().contentName);
             });
             this.setState({

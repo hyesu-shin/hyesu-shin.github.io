@@ -48,12 +48,12 @@ export default class ContentsBody extends Component {
         this.getNavigationItems();
 
         // 이벤트 버블링
-        this.addEvent('click', '.category', ({target}) => {
-            const { contents } = this.$state;
-            console.log('ddddd', contents);
-
-           historyRoutePush('/list', $contents, { contents })
-        });
+        // this.addEvent('click', '.category', ({target}) => {
+        //     console.log('navigation 클릭 이벤트 버블링');
+        //     console.log(target);
+        //     let contents = this.$state.contents;
+        //     historyRoutePush('/list', $contents, { contents })
+        // });
     }
 
     get navigation () {
@@ -64,7 +64,7 @@ export default class ContentsBody extends Component {
     // 내비게이션 리스트 받아오는 함수
     getNavigationItems () {
         const database = firebase.database;
-        let list = [];
+        let list = ['전체보기'];
 
         database.collection('categories').get().then((response) => {
            response.forEach((doc) => {
@@ -77,12 +77,16 @@ export default class ContentsBody extends Component {
     }
 
     // 카테고리 선택시 선택된 카테고리에 해당하는 컨텐츠 목록 출력 함수
-    getSelectedContentList (selectedContents) {
-        console.log('컨텐츠 목록 바인드');
-        this.setState({
-            contents: selectedContents
-        });
-        console.log(this.$state);
+    getSelectedContentList (contentList, param) {
+        const $contents = this.$target.querySelector('#contents');
+        console.log('컨텐츠 목록 바인드', contentList);
+        console.log(param);
+        historyRoutePush('/list',
+            $contents,
+            {
+                listItems: contentList,
+                params: '/'+ param
+            });
     }
 }
 

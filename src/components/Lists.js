@@ -5,7 +5,7 @@ export default class Lists extends Component {
 
     template() {
         const { listItems } = this.$props;
-        console.log('listItems', listItems);
+        // console.log('props로 전달되는 리스트 아이템', listItems);
 
         return `
             <div class="list-wrap">
@@ -15,7 +15,8 @@ export default class Lists extends Component {
 <!--                            <figure class="image is-64x64">-->
 <!--                            -->
 <!--                            </figure>-->
-                            ${item}
+                            ${item.contentName}
+                            ${item.category}
                             ${key}
                         </li>
                     `).join('')}
@@ -35,7 +36,13 @@ export default class Lists extends Component {
 
         this.addEvent('click', '#item', ({target}) => {
             const $route = target.getAttribute('route');
-            historyRoutePush($route, $contents, { listItems });
+
+            historyRoutePush($route,
+                $contents,
+                {
+                    listItems: listItems,
+                    params: ''
+                });
         });
     }
 }

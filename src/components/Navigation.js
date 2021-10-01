@@ -42,8 +42,9 @@ export default class Navigation extends Component {
     setEvent () {
         // 카테고리 클릭 이벤트
         this.addEvent('click', '.category', ({target}) => {
-           let name = target.innerHTML;
-           this.getCategoryInfo(name);
+            console.log('navigation 클릭 이벤트 발생');
+            let name = target.innerHTML;
+            this.getCategoryInfo(name);
         });
     }
 
@@ -54,7 +55,7 @@ export default class Navigation extends Component {
             .get()
             .then((querySnapShot) => {
                 querySnapShot.forEach((doc) => {
-                    this.getContentList(doc.id);
+                    this.getContentList(doc.id, doc.data().name);
                 })
             })
             .catch((error) => {
@@ -63,7 +64,7 @@ export default class Navigation extends Component {
     }
 
     // categoryId 와 매칭되는 content list 받아오는 함수
-    getContentList (_id) {
+    getContentList (_id, _name) {
         const { getSelectedContentList } = this.$props;
 
         firebase.database.collection('contents').where("category", "==", _id)
@@ -74,7 +75,7 @@ export default class Navigation extends Component {
                     // console.log(_id, doc.data());
                     contentList.push(doc.data())
                 })
-                getSelectedContentList(contentList);
+                getSelectedContentList(contentList, _name);
             })
             .catch((error) => {
                 console.log("Error getting documents", error)

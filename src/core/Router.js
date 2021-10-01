@@ -12,7 +12,7 @@ const routes = {
 // entry point
 function initialRoutes (mode, el, props) {
     renderComponent(el, routes['/'], props);
-    window.history.replaceState({}, '/', window.location.origin + '/list');
+    window.history.replaceState(props, '/', window.location.origin + '/list');
 
     // window.history.pushState({}, '/', window.location.origin);
     // if (mode === 'history') {
@@ -30,15 +30,19 @@ function initialRoutes (mode, el, props) {
 
 // set browser history
 function historyRoutePush (pathName, el, props) {
-    window.history.pushState({}, pathName, window.location.origin + pathName);
+    window.history.pushState(props, pathName, window.location.origin + pathName + props.params);
     renderComponent(el, routes[pathName], props);
 
     // 뒤로가기, 앞으로가기 이벤트
     window.onpopstate = (event) => {
         let beforeUrl = event.path[0].location.href;
         let beforePathName = event.path[0].location.pathname;
-        renderComponent(el, routes[beforePathName], props);
-        window.history.replaceState({}, beforePathName, beforeUrl);
+
+        // url 의 path '/' 기준으로 나눠서 두번째 값만 사용
+        let beforePathNameArray = beforePathName.split('/');
+
+        renderComponent(el, routes['/' + beforePathNameArray[1]], event.state);
+        window.history.replaceState(event.state , beforePathName, beforeUrl);
     }
 }
 
