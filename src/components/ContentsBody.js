@@ -79,8 +79,8 @@ export default class ContentsBody extends Component {
     // 카테고리 선택시 선택된 카테고리에 해당하는 컨텐츠 목록 출력 함수
     getSelectedContentList (contentList, param) {
         const $contents = this.$target.querySelector('#contents');
-        console.log('컨텐츠 목록 바인드', contentList);
-        console.log(param);
+        // console.log('컨텐츠 목록 바인드', contentList);
+        // console.log(param);
         historyRoutePush('/list',
             $contents,
             {

@@ -42,7 +42,7 @@ export default class Navigation extends Component {
     setEvent () {
         // 카테고리 클릭 이벤트
         this.addEvent('click', '.category', ({target}) => {
-            console.log('navigation 클릭 이벤트 발생');
+            // console.log('navigation 클릭 이벤트 발생');
             let name = target.innerHTML;
             this.getCategoryInfo(name);
         });

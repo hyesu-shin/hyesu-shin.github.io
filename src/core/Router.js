@@ -30,7 +30,7 @@ function initialRoutes (mode, el, props) {
 
 // set browser history
 function historyRoutePush (pathName, el, props) {
-    console.log(pathName, el ,props);
+    // console.log('라우터에서 실행되고 있습니다.', pathName, el ,props);
     window.history.pushState(props, pathName, window.location.origin + pathName + props.params);
     renderComponent(el, routes[pathName], props);
 
