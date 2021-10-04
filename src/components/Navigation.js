@@ -44,14 +44,22 @@ export default class Navigation extends Component {
         this.addEvent('click', '.category', ({target}) => {
             // console.log('navigation 클릭 이벤트 발생');
             let name = target.innerHTML;
-            this.getCategoryInfo(name);
+
+            // 전체보기가 선택되었을 경우
+            if (name === '전체보기') {
+                this.getAllContentList(name);
+            }
+            // 카테고리가 선택되었을 경우
+            else {
+                this.getCategoryInfo(name);
+            }
         });
     }
 
     // 카테고리 정보 받아오는 함수
     getCategoryInfo(_name) {
 
-        let categoryData = firebase.database.collection('categories').where("name", "==", _name)
+        firebase.database.collection('categories').where("name", "==", _name)
             .get()
             .then((querySnapShot) => {
                 querySnapShot.forEach((doc) => {
@@ -72,13 +80,31 @@ export default class Navigation extends Component {
             .then((querySnapShot) => {
                 let contentList = []
                 querySnapShot.forEach((doc) => {
-                    // console.log(_id, doc.data());
-                    contentList.push(doc.data())
+                    let data = doc.data()
+                    data['id'] = doc.id
+                    contentList.push(data)
                 })
                 getSelectedContentList(contentList, _name);
             })
             .catch((error) => {
                 console.log("Error getting documents", error)
             })
+    }
+
+    // 전체 리스트 받아오는 함수
+    getAllContentList (_name) {
+        const { getSelectedContentList } = this.$props;
+        let contentList = [];
+
+        firebase.database.collection('contents').get().then((response) => {
+            response.forEach((doc) => {
+                let data = doc.data()
+                data['id'] = doc.id
+
+                contentList.push(data)
+                // console.log(doc.id, doc.data().contentName);
+            });
+            getSelectedContentList(contentList, _name);
+        });
     }
 }

@@ -20,6 +20,7 @@ export default class Lists extends Component {
 <!--                            </figure>-->
                             <div>
                                 <div id="content-name">${item.contentName}</div>
+                                <div id="content-id">${item.id}</div>
                                 <div>${item.category}</div>
                                 <div id="content-mdFile">${item.mdFile}</div>
                                 <div>${key}</div>
@@ -45,13 +46,15 @@ export default class Lists extends Component {
             // const $route = target.getAttribute('route');
             // console.log('현재 타겟', currentTarget);
 
+            let contentId = target.querySelector('#content-id');
             let contentName = target.querySelector('#content-name');
             let mdFile = target.querySelector('#content-mdFile');
 
             // 자식 요소가 선택되었을 경우임
-            if (contentName === null) {
+            if (contentId === null) {
                 let item = target.closest('#item');
 
+                contentId = item.querySelector('#content-id');
                 contentName = item.querySelector('#content-name');
                 mdFile = item.querySelector('#content-mdFile');
             }
@@ -60,6 +63,7 @@ export default class Lists extends Component {
                 $contents,
                 {
                     listItems: listItems,
+                    contentId: contentId.innerHTML,
                     params: '/' + contentName.innerHTML
                 });
         });

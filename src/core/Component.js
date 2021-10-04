@@ -31,6 +31,7 @@ export default class Component {
     }
 
     setState(newState) {
+        console.log(newState)
         this.$state = {...this.$state, ...newState};
         this.render();
     }

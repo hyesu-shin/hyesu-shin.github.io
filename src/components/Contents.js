@@ -48,7 +48,10 @@ export default class Contents extends Component {
 
         database.collection('contents').get().then((response) => {
             response.forEach((doc) => {
-                list.push(doc.data());
+                let data = doc.data();
+                data['id'] = doc.id
+
+                list.push(data);
                 // console.log(doc.id, doc.data().contentName);
             });
             this.setState({
