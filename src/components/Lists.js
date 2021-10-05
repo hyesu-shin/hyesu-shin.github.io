@@ -15,10 +15,8 @@ export default class Lists extends Component {
                 <ul>
                     ${listItems.map((item, key) => `
                         <li id="item" class="box" route="/item">
-<!--                            <figure class="image is-64x64">-->
-<!--                            -->
-<!--                            </figure>-->
                             <div>
+                                <figure class="image is-64x64"></figure>
                                 <div id="content-name">${item.contentName}</div>
                                 <div id="content-id">${item.id}</div>
                                 <div>${item.category}</div>

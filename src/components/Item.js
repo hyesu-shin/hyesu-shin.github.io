@@ -1,4 +1,4 @@
-import Component from "../core/Component.js";
+import Component from "../core/Component";
 import firebase from "../firebase";
 import showdown from "showdown";
 
@@ -39,6 +39,7 @@ export default class Item extends Component {
            let fileURL = doc;
 
            this.HttpFunction(fileURL);
+
         });
     }
 
