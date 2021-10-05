@@ -14,14 +14,16 @@ export default class Lists extends Component {
             <div class="list-wrap">
                 <ul>
                     ${listItems.map((item, key) => `
-                        <li id="item" class="box" route="/item">
-                            <div>
-                                <figure class="image is-64x64"></figure>
+                        <li id="item" class="box is-flex" route="/item">
+                            <div class="image-wrap">
+                                <figure></figure>
+                            </div>
+                            <div class="list-content-wrap">
                                 <div id="content-name">${item.contentName}</div>
                                 <div id="content-id">${item.id}</div>
                                 <div>${item.category}</div>
                                 <div id="content-mdFile">${item.mdFile}</div>
-                                <div>${key}</div>
+                                <div>${item.insertTime}</div>
                             </div>
                             
                         </li>

@@ -83,6 +83,15 @@ a:hover {
     width: 100%;
 }
 
+.list-content-wrap {
+
+}
+
+.image-wrap {
+    min-width: 135px;
+    min-height: 135px;
+}
+
 .category-list {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -114,7 +123,7 @@ a:hover {
     padding: 0;
 }
 
-.tile .is-ancestor  {
+.tile.is-ancestor  {
     margin-top: 0;
 }
 
