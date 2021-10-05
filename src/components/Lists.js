@@ -63,6 +63,7 @@ export default class Lists extends Component {
                 $contents,
                 {
                     listItems: listItems,
+                    mdFile: mdFile.innerHTML,
                     contentId: contentId.innerHTML,
                     params: '/' + contentName.innerHTML
                 });

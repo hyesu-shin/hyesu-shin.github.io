@@ -66,6 +66,7 @@ a:hover {
 }
 
 .list-wrap {
+    max-width: 90%;
     /*min-width:80%;*/
 }
 
@@ -79,7 +80,7 @@ a:hover {
 }
 
 .list-contents {
-    min-width: 90%;
+    width: 100%;
 }
 
 .category-list {
@@ -87,13 +88,33 @@ a:hover {
     padding-bottom: 0.5rem;
 }
 
+.markdown-wrap {
+    max-width: 90%;
+}
+
+.markdown-content {
+    max-width: 100%;
+}
+
+.markdown-content ul {
+    list-style-type: disc !important;
+}
+
+.markdown-content pre {
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+}
+
 /* bulma tile */
 
+.tile {
+    width: 100%;
+}
 .tile .is-parent {
     padding: 0;
 }
 
-.tile.is-ancestor  {
+.tile .is-ancestor  {
     margin-top: 0;
 }
 
@@ -101,4 +122,11 @@ a:hover {
 
 .box {
     box-shadow: 3px 3px 3px rgb(206 205 205);
+}
+
+/* bulma p */
+
+p {
+    /* 영역 넘어가는 내용 줄바꿈 처리 */
+    word-break: break-all !important;
 }

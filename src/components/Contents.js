@@ -59,12 +59,4 @@ export default class Contents extends Component {
             });
         });
     }
-
-    // 카테고리명 받아오는 함수
-    getCategoryName () {
-        let categoryName;
-
-        categoryName = window.location.query;
-        return categoryName;
-    }
 }

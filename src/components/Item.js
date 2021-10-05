@@ -1,25 +1,22 @@
 import Component from "../core/Component.js";
 import firebase from "../firebase";
+import showdown from "showdown";
 
 export default class Item extends Component {
 
     template() {
         return `
-            <div class="hero">
-                <div class="hero-body">
-                    <div class="container">
-                        <p class="has-text-grey">아이템임 ! 마크다운 파일 들어갈 예정</p>                                
-                    </div>
-                </div>
-            </div>
+            <div class="markdown-wrap">
+                <div class="markdown-content" id="markdown-content"></div>    
+            </div>                    
         `
     }
 
     mounted() {
-        const { contentId } = this.$props;
+        const { mdFile, contentId } = this.$props;
 
         this.getContentFile(contentId);
-        this.getStorageFile();
+        this.getStorageFile(mdFile);
     }
 
     // 선택된 content 의 md 파일 가져오는 함수
@@ -35,14 +32,37 @@ export default class Item extends Component {
         });
     }
 
-    // firebase storage 접근
-    // 테스트용 contentId : 5TjyzOIrBZ6Xrn6Kpp34
-    getStorageFile () {
-        firebase.storage.ref('/test').listAll().then((doc) =>{
-            doc.items.forEach((ref) => {
-                console.log(ref.getDownloadURL());
-            })
+
+    getStorageFile (_mdFile) {
+        const ref = firebase.storage.ref(_mdFile);
+        ref.getDownloadURL().then((doc) => {
+           let fileURL = doc;
+
+           this.HttpFunction(fileURL);
         });
+    }
+
+    HttpFunction (_fileURL) {
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status === 200) {
+                    let responseData = xhttp.responseText;
+                    console.log(responseData)
+                    const converter = new showdown.Converter({
+                            'strikethrough': true,
+                            'simpleLineBreaks': true
+                            // 'splitAdjacentBlockquotes': true
+                        });
+                    const textHtml = converter.makeHtml(responseData);
+                    console.log(textHtml);
+                    document.querySelector("#markdown-content").innerHTML = textHtml;
+                }
+            }
+        }
+        xhttp.open("GET", _fileURL, true);
+        xhttp.send(null);
     }
 
 }
