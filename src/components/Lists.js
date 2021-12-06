@@ -9,6 +9,9 @@ export default class Lists extends Component {
     template() {
         const { listItems } = this.$props;
         // console.log('props로 전달되는 리스트 아이템', listItems);
+        // <div>${item.category}</div>
+        // <div id="content-mdFile">${item.mdFile}</div>
+        // <div>${item.insertTime}</div>
 
         return `
             <div class="list-wrap">
@@ -21,11 +24,8 @@ export default class Lists extends Component {
                             <div class="list-content-wrap">
                                 <div id="content-name">${item.contentName}</div>
                                 <div id="content-id">${item.id}</div>
-                                <div>${item.category}</div>
                                 <div id="content-mdFile">${item.mdFile}</div>
-                                <div>${item.insertTime}</div>
                             </div>
-                            
                         </li>
                     `).join('')}
                 </ul>        

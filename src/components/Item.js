@@ -25,7 +25,7 @@ export default class Item extends Component {
 
         contentItem.get().then((doc) => {
             if (doc.exists) {
-                console.log(doc.data());
+                // console.log(doc.data());
             } else {
                 console.log('No such document!');
             }
@@ -36,9 +36,9 @@ export default class Item extends Component {
     getStorageFile (_mdFile) {
         const ref = firebase.storage.ref(_mdFile);
         ref.getDownloadURL().then((doc) => {
-           let fileURL = doc;
+           // let fileURL = doc;
 
-           this.HttpFunction(fileURL);
+           this.HttpFunction(doc);
 
         });
     }
@@ -50,14 +50,14 @@ export default class Item extends Component {
             if (xhttp.readyState === 4) {
                 if (xhttp.status === 200) {
                     let responseData = xhttp.responseText;
-                    console.log(responseData)
+                    // console.log(responseData)
                     const converter = new showdown.Converter({
                             'strikethrough': true,
                             'simpleLineBreaks': true
                             // 'splitAdjacentBlockquotes': true
                         });
                     const textHtml = converter.makeHtml(responseData);
-                    console.log(textHtml);
+                    // console.log(textHtml);
                     document.querySelector("#markdown-content").innerHTML = textHtml;
                 }
             }
