@@ -21,7 +21,7 @@
 title: TIL
 description: "sue's TIL"
 baseurl: "/til" # the subpath of your site, e.g. /blog
-url: "https://hyesu-shin.github.io/"
+url: "https://hyesu-shin.github.io"
 
 author:
   name:         Sue
