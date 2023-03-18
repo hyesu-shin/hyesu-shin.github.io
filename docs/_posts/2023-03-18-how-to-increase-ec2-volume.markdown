@@ -2,7 +2,7 @@
 layout: post
 title: "EC2 볼륨을 늘리는 방법"
 date: 2023-03-18 19:20:00 +0900
-tags: AWS, Linux
+tags: AWS Linux
 ---
 
 <br />
