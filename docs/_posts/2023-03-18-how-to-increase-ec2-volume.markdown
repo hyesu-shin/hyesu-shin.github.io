@@ -60,7 +60,6 @@ $ sudo resize2fs /dev/xvda1
 
 // xfs
 $ sudo xfs_growfs /dev/xvda1
-
 ```
 
 <br />
