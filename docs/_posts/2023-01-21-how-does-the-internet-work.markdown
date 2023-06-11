@@ -8,7 +8,8 @@ tags: CS Network
 <br />
 
 
-<img width="585" alt="image" src="https://github.com/hyesu-shin/hyesu-shin.github.io/assets/64633169/f5290cff-8daa-4197-b2f4-3c9997062ea4">
+<img width="600" alt="image" src="https://github.com/hyesu-shin/hyesu-shin.github.io/assets/64633169/1ce55e64-9fa5-44b7-97f7-c58a47169f14">
+
 
 
 ### OSI 7계층
